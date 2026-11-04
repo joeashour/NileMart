@@ -1,9 +1,10 @@
 package org.route;
 
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-
+@Component
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,4 +18,5 @@ public class Product {
     private BigDecimal price;
     private String category;
     private boolean isActive;
+    private int stockQuantity;
    }

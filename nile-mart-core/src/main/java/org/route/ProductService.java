@@ -3,6 +3,7 @@ package org.route;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class ProductService {
@@ -21,5 +22,12 @@ public class ProductService {
                 .filter(Product::isActive)
                 .orElseThrow(() -> new RuntimeException("Product isn't available."));
         return pricingService.getPrice(product, qty);
+    }
+    public List<Product> findAll() {
+        return repository.findAll();
+    }
+    public Product findBySku(String sku) {
+        return repository.findBySku(sku)
+                .orElseThrow(() -> new StoreException("Product with SKU " + sku + " not found."));
     }
 }
